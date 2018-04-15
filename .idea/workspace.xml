@@ -420,7 +420,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523784804221</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="init">
+      <created>1523786420331</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1523786420331</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -462,7 +469,8 @@
     <MESSAGE value="git hub init" />
     <MESSAGE value="fff" />
     <MESSAGE value="ttt" />
-    <option name="LAST_COMMIT_MESSAGE" value="ttt" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
