@@ -4,8 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/StructuredLight.py" line="224" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f855ea5-dc8d-4dc0-aa68-4db55bd83dcc" name="Default" comment="start">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="6f855ea5-dc8d-4dc0-aa68-4db55bd83dcc" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SLS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,9 +40,10 @@
       <file leaf-file-name="StructuredLight.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/StructuredLight.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+            <state relative-caret-position="132">
+              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
               <folding>
+                <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#262#1552#0" expanded="false" />
                 <element signature="e#1604#2554#0" expanded="false" />
                 <element signature="e#2641#4205#0" expanded="false" />
@@ -143,8 +144,9 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.selected.configurable" value="vcs.CVS" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -337,6 +339,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Shai\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6f855ea5-dc8d-4dc0-aa68-4db55bd83dcc" name="Default" comment="" />
@@ -359,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519210784450</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="start">
+      <created>1523782188058</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1523782188058</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -436,6 +448,7 @@
         <state relative-caret-position="22">
           <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -461,6 +474,7 @@
         <state relative-caret-position="22">
           <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -486,6 +500,7 @@
         <state relative-caret-position="5478">
           <caret line="249" column="17" selection-start-line="249" selection-start-column="17" selection-end-line="249" selection-end-column="17" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -511,6 +526,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -536,6 +552,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -561,6 +578,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -586,6 +604,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -611,6 +630,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
@@ -640,9 +660,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/StructuredLight.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        <state relative-caret-position="132">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
           <folding>
+            <element signature="e#0#10#0" expanded="true" />
             <element signature="e#262#1552#0" expanded="false" />
             <element signature="e#1604#2554#0" expanded="false" />
             <element signature="e#2641#4205#0" expanded="false" />
