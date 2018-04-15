@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 import glob
 
 
-# git password - sls123
+# git password - sls123 test
 
 def GenerateGrayCodePatternsImages(width, height, resultWidth, resultHeight,
                                    direction='vertical', layerLimit = 20):
