@@ -7,7 +7,7 @@ import glob
 # git password - sls123 test
 
 def GenerateGrayCodePatternsImages(width, height, resultWidth, resultHeight,
-                                   direction='vertical', layerLimit = 20):
+                                   direction='vertical', layerLimit=20):
     '''
     generate a set of binary gray code patterns in the given direction based on projector resolution
     :param width: projector width in pixels
@@ -29,14 +29,14 @@ def GenerateGrayCodePatternsImages(width, height, resultWidth, resultHeight,
     max_lvl = np.min([max_lvl, layerLimit])
     # goes over each level and create the image
     while i <= max_lvl:
-        cv2.imwrite(str(i)+'.jpg', p)
-        img = cv2.imread(str(i)+'.jpg', 0)
+        cv2.imwrite(str(i) + '.jpg', p)
+        img = cv2.imread(str(i) + '.jpg', 0)
         img = cv2.resize(img, (resultWidth, resultHeight))
         ret, img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
-        cv2.imwrite(str(i)+'.jpg', img)
+        cv2.imwrite(str(i) + '.jpg', img)
         if direction == 'vertical':
-            p = np.hstack((p, np.array(patterns[i-1][:, ::-1])))
-        else: # not fully working, make sure to fix it
+            p = np.hstack((p, np.array(patterns[i - 1][:, ::-1])))
+        else:  # not fully working, make sure to fix it
             p = np.hstack((p, np.array(patterns[i - 1][:-1])))
         patterns.append(p)
         i += 1
@@ -64,15 +64,16 @@ def BuildCodeMatrix(pathes, mode='pattern'):
         # plt.show()
         if c != 0:  # other iterations
             code_map[:, :, c] = img
-        else:    # first iteration
+        else:  # first iteration
             rows, cols, depth = img.shape[0], img.shape[1], len(pathes)
             code_map = np.zeros((rows, cols, depth), dtype=int)
             code_map[:, :, c] = img
         c += 1
-    code_map[code_map > 0] = 1   # make the map binary
+    code_map[code_map > 0] = 1  # make the map binary
     return code_map
 
-def BuildLightPlanes(paths, projCalibMatrix, distCoeffs, distBetweenPlanes = 2):
+
+def BuildLightPlanes(paths, projCalibMatrix, distCoeffs, distBetweenPlanes=2):
     '''
     build the light planes normals that goes from the projector perspective center
     :param pathes: list of patterns paths (vertical)
@@ -104,8 +105,9 @@ def BuildLightPlanes(paths, projCalibMatrix, distCoeffs, distBetweenPlanes = 2):
         # v1 = np.array([x, y1, -projectorFocalLength])
         # v2 = np.array([x, y2, -projectorFocalLength])
         n = np.cross(v1, v2)
-        planes[key] = n/np.linalg.norm(n)
+        planes[key] = n / np.linalg.norm(n)
     return planes
+
 
 def PlaneAndRayIntersection(planeOrigin, rayOrigin, planeNormal, rayDirection):
     '''
@@ -118,16 +120,17 @@ def PlaneAndRayIntersection(planeOrigin, rayOrigin, planeNormal, rayDirection):
     '''
     a = planeOrigin - rayOrigin
     b = rayDirection.dot(planeNormal)
-    angle = np.degrees(np.arccos(b/(np.linalg.norm(rayDirection) * np.linalg.norm(planeNormal))))
+    angle = np.degrees(np.arccos(b / (np.linalg.norm(rayDirection) * np.linalg.norm(planeNormal))))
     if 75 < angle < 105:  # in case of ray and light plane are parallel
         return None
     c = a.dot(planeNormal)
     d = c * (rayDirection)
     return rayOrigin + (d / b)
 
+
 def ComputePointsCloud(lightPlanes, camCodeMatrix, projPosition,
                        camCalibMatrix, distCoeffs, camPosition,
-                       camRotation, startPoint, endPoint, distanceBetweenRays = 2):
+                       camRotation, startPoint, endPoint, distanceBetweenRays=2):
     '''
     compute all the 3d points in the scene
     :param lightPlanes: dictionary of light planes normals
@@ -141,25 +144,25 @@ def ComputePointsCloud(lightPlanes, camCodeMatrix, projPosition,
     :return: list of XYZ points
     '''
 
-    xp, yp, camFocalLength = camCalibMatrix[0, 2], camCalibMatrix[1, 2],\
-                           (camCalibMatrix[0, 0] + camCalibMatrix[1, 1]) * 0.5
+    xp, yp, camFocalLength = camCalibMatrix[0, 2], camCalibMatrix[1, 2], \
+                             (camCalibMatrix[0, 0] + camCalibMatrix[1, 1]) * 0.5
     points = []
     startRow = startPoint[0]
     endRow = endPoint[0]
     startCol = startPoint[1]
     endCol = endPoint[1]
-    perspective = np.hstack((camCalibMatrix, np.reshape(camPosition, (3, 1))))
+    # perspective = np.hstack((camCalibMatrix, np.reshape(camPosition, (3, 1))))
     for i in xrange(startRow, endRow, distanceBetweenRays):
         for j in xrange(startCol, endCol, distanceBetweenRays):
             # # un distort the image point
             # p = np.array([[[j, i]]], dtype=np.float32)
             # p = cv2.undistortPoints(p, camCalibMatrix, distCoeffs, R=camRotation, P=perspective)
             # x, y = p[0, 0, 0], p[0, 0, 1]
-            x, y = j - xp, -(i - yp)    # without distortion fix
+            x, y = j - xp, -(i - yp)  # without distortion fix
             rayDirection = camRotation.dot(np.array([x, y, -camFocalLength]))
             rayDirection /= np.linalg.norm(rayDirection)
             key = "".join(map(str, camCodeMatrix[i, j]))
-            if int(key) == 0:   # remove background
+            if int(key) == 0:  # remove background
                 continue
             try:
                 planeNormal = lightPlanes[key]
@@ -170,6 +173,7 @@ def ComputePointsCloud(lightPlanes, camCodeMatrix, projPosition,
             except:
                 pass
     return points
+
 
 def WritePointsToFile(points, file_name, format='txt'):
     '''
@@ -184,6 +188,7 @@ def WritePointsToFile(points, file_name, format='txt'):
         str1 = str(p[0]) + "," + str(p[1]) + "," + str(p[2]) + "\n"
         text_file.write(str1)
     text_file.close()
+
 
 def checkBitChange(prev_key, key):
     '''
@@ -223,15 +228,16 @@ if __name__ == '__main__':
                         [0.00000000e+00, 0.00000000e+00, 1.00000000e+00]], dtype=np.float32)
     cam_dist = np.array([[1.43317881e+00, -1.60413408e+01, -5.02219786e-04, 5.46041307e-02,
                           8.13172505e+01]], dtype=np.float32)
-    camPosition_box = np.array([ -4.54306512, -4.84217478, 23.56067222], dtype=np.float32)
-    camRotation_box = np.array([[ 9.85955787e-01,   5.38614856e-02,   1.58082660e-01],
- [ -2.16918651e-04,   9.46977857e-01,  -3.21298756e-01],
- [ -1.67006407e-01,   3.16752077e-01,   9.33689982e-01]], dtype=np.float32)
+    camPosition_box = np.array([-4.54306512, -4.84217478, 23.56067222], dtype=np.float32)
+    camRotation_box = np.array([[9.85955787e-01, 5.38614856e-02, 1.58082660e-01],
+                                [-2.16918651e-04, 9.46977857e-01, -3.21298756e-01],
+                                [-1.67006407e-01, 3.16752077e-01, 9.33689982e-01]],
+                               dtype=np.float32)
 
-    camPosition_dum = np.array([-9.85938852,-1.99040076, 39.25014791], dtype=np.float32)
-    camRotation_dum = np.array([[ 0.97130392,  0.03227768,  0.23564135],
- [-0.01083326,  0.99572424, -0.09173807],
- [-0.2375949,   0.08655278,  0.96750053]],
+    camPosition_dum = np.array([-9.85938852, -1.99040076, 39.25014791], dtype=np.float32)
+    camRotation_dum = np.array([[0.97130392, 0.03227768, 0.23564135],
+                                [-0.01083326, 0.99572424, -0.09173807],
+                                [-0.2375949, 0.08655278, 0.96750053]],
                                dtype=np.float32)
     camCodeMatrix = BuildCodeMatrix(dummie_paths, 'map')
     print "building camera code matrix..."

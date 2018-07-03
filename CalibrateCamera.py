@@ -188,7 +188,7 @@ def RelativeOrientation(image_cam, image_proj, rows, cols, camMatrix, camDistCoe
     '''
     compute camera relative orientation to the projector
     :param image_cam: image of the chess board as seen by the camera
-    :param image_proj: image of the projected chessboard
+    :param image_proj: image of the projected chessboard (the image the projector project)
     :param rows: num of rows in chessboard
     :param cols: num of cols in chessboard
     :param camMatrix: camera calibration matrix
@@ -277,7 +277,10 @@ if __name__ == '__main__':
  [   0.,            0.,            1.        ]])
     proj_dist = np.array([[ -1.20178761e-01,   5.02083179e-03,   2.30760632e-03,   4.06847903e-02,
     1.52240260e-05]])
+
+
     relative = images_cam[0]
+    relative = images_proj[0]
     # relative = "./images/simple/relative.JPG"
     R, t = RelativeOrientation(relative,
                                chess_path,
